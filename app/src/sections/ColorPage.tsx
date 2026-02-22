@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Play } from 'lucide-react';
+import { Play, User, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { products, testimonials, colorFAQs, beforeAfterImages } from '@/data/products';
 import { useCart } from '@/context/CartContext';
@@ -55,15 +55,12 @@ function BeforeAfterSlider({ before, after, alt }: BeforeAfterSliderProps) {
       onTouchStart={handleMouseDown}
       onTouchEnd={handleMouseUp}
     >
-      {/* Before Image (full) */}
       <img 
         src={before} 
         alt={`${alt} before`}
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
-      
-      {/* After Image (clipped) */}
       <div 
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
@@ -75,16 +72,8 @@ function BeforeAfterSlider({ before, after, alt }: BeforeAfterSliderProps) {
           draggable={false}
         />
       </div>
-
-      {/* Labels */}
-      <div className="absolute top-4 left-4 bg-black/60 text-white text-xs px-2 py-1 rounded font-medium">
-        BEFORE
-      </div>
-      <div className="absolute top-4 right-4 bg-black/60 text-white text-xs px-2 py-1 rounded font-medium">
-        AFTER
-      </div>
-
-      {/* Slider Handle */}
+      <div className="absolute top-4 left-4 bg-black/60 text-white text-xs px-2 py-1 rounded font-medium">BEFORE</div>
+      <div className="absolute top-4 right-4 bg-black/60 text-white text-xs px-2 py-1 rounded font-medium">AFTER</div>
       <div 
         className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize shadow-lg"
         style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
@@ -104,37 +93,117 @@ interface ColorPageProps {
   onNavigate?: (page: string) => void;
 }
 
-export function ColorPage({ onNavigate: _onNavigate }: ColorPageProps) {
-  const { addToCart } = useCart();
+const VIMEO_VIDEO_ID = '1112585023';
+
+const navItems = [
+  { id: 'sfx', label: 'SFX' },
+  { id: 'color', label: 'COLOR' },
+];
+
+export function ColorPage({ onNavigate }: ColorPageProps) {
+  const { addToCart, totalItems, setIsCartOpen } = useCart();
   const colorProducts = products.filter(p => p.category === 'color');
 
   return (
     <div className="min-h-screen bg-neutral-100">
-      {/* Hero Section */}
-      <section className="relative h-[70vh] overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: 'url(https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=1600&q=80)',
-          }}
-        >
-          <div className="absolute inset-0 bg-black/40" />
-        </div>
-        
-        {/* Torn Edge Bottom */}
-        <div className="absolute bottom-0 left-0 right-0 h-20">
-          <svg viewBox="0 0 1440 80" fill="none" className="w-full h-full" preserveAspectRatio="none">
-            <path 
-              d="M0,80 L0,40 Q60,50 120,30 T240,40 T360,30 T480,40 T600,30 T720,40 T840,30 T960,40 T1080,30 T1200,40 T1320,30 T1440,40 L1440,80 Z" 
-              fill="#f5f5f5"
-            />
-          </svg>
+      {/* CINEMATIC FULLSCREEN HERO SECTION */}
+      <section className="relative h-screen w-full overflow-hidden">
+        {/* FULLSCREEN VIDEO BACKGROUND */}
+        <div className="absolute inset-0 w-full h-full bg-black">
+          <iframe
+            src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&portrait=0&dnt=1`}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+            style={{
+              width: '177.78vh',
+              height: '100vh',
+              minWidth: '100vw',
+              minHeight: '56.25vw',
+              pointerEvents: 'none',
+              border: 'none',
+            }}
+            allow="autoplay; fullscreen; picture-in-picture"
+            title="Color Background Video"
+          />
         </div>
 
-        {/* Hero Content */}
-        <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+        {/* Subtle dark gradient overlay */}
+        <div 
+          className="absolute inset-0 z-10"
+          style={{
+            background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%)'
+          }}
+        />
+
+        {/* TRANSPARENT FLOATING NAVIGATION */}
+        <motion.nav
+          className="absolute top-0 left-0 right-0 z-30 flex items-center justify-center gap-12 py-8"
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {navItems.map((item, index) => (
+            <div key={item.id} className="flex items-center">
+              <button
+                onClick={() => onNavigate?.(item.id)}
+                className={`group relative text-white/80 hover:text-white transition-all duration-500 tracking-[0.25em] text-sm font-light uppercase ${
+                  item.id === 'color' ? 'text-white' : ''
+                }`}
+              >
+                {item.label}
+                <span className="absolute inset-0 -m-3 bg-white/0 rounded-full blur-lg transition-all duration-500 group-hover:bg-white/10" />
+              </button>
+              {index < navItems.length - 1 && (
+                <span className="text-white/40 select-none ml-12">•</span>
+              )}
+            </div>
+          ))}
+        </motion.nav>
+
+        {/* Right Actions - Cart & Login */}
+        <motion.div
+          className="absolute top-0 right-0 z-30 flex items-center gap-6 py-6 px-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <button 
+            onClick={() => setIsCartOpen(true)}
+            className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 text-xs tracking-wider uppercase"
+          >
+            <Lock className="w-4 h-4" />
+            <span>CART</span>
+            {totalItems > 0 && (
+              <span className="bg-white/20 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
+            )}
+          </button>
+          <button className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 text-xs tracking-wider uppercase">
+            <User className="w-4 h-4" />
+            <span>LOG IN</span>
+          </button>
+        </motion.div>
+
+        {/* Logo - Top Left */}
+        <motion.div
+          className="absolute top-0 left-0 z-30 py-6 px-8"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+        >
+          <button onClick={() => onNavigate?.('home')}>
+            <img
+              src="/logo.png"
+              alt="Filmkid"
+              className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+            />
+          </button>
+        </motion.div>
+
+        {/* HERO CONTENT */}
+        <div className="absolute inset-0 z-20 flex flex-col items-center justify-center">
           <motion.h1 
-            className="text-5xl md:text-7xl font-bold text-white mb-4"
+            className="text-5xl md:text-7xl lg:text-8xl font-extralight text-white tracking-[0.15em] uppercase mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
@@ -175,7 +244,6 @@ export function ColorPage({ onNavigate: _onNavigate }: ColorPageProps) {
       {/* Product Info Section */}
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12">
-          {/* LUT Info */}
           <div className="text-center">
             <h3 className="text-2xl font-bold text-blue-600 mb-4">Filmkid 16 LUT</h3>
             <p className="text-blue-500 mb-8">
@@ -195,7 +263,6 @@ export function ColorPage({ onNavigate: _onNavigate }: ColorPageProps) {
             </div>
           </div>
 
-          {/* Powergrade Info */}
           <div className="text-center">
             <h3 className="text-2xl font-bold text-blue-600 mb-4">Filmkid 16 Powergrade</h3>
             <p className="text-blue-500 mb-8">
@@ -265,8 +332,6 @@ export function ColorPage({ onNavigate: _onNavigate }: ColorPageProps) {
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                
-                {/* Software Icons */}
                 <div className="absolute top-4 left-4 flex gap-2">
                   {product.id === 'color-lut' ? (
                     <>
@@ -278,7 +343,6 @@ export function ColorPage({ onNavigate: _onNavigate }: ColorPageProps) {
                     <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">DaVinci</span>
                   )}
                 </div>
-
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-white font-bold text-xl mb-2">{product.name}</h3>
                   {product.includes && (
@@ -303,7 +367,6 @@ export function ColorPage({ onNavigate: _onNavigate }: ColorPageProps) {
           ))}
         </div>
 
-        {/* Bundle Card */}
         <div className="mt-8">
           <div className="product-card bg-black rounded-lg overflow-hidden max-w-3xl mx-auto">
             <div className="p-8 text-center">

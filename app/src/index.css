@@ -158,9 +158,9 @@
   @apply bg-blue-700 transform scale-105;
 }
 
-/* Navigation pill */
+/* Navigation pill - transparent for video overlay */
 .nav-pill {
-  @apply bg-blue-600 text-white px-6 py-2 rounded-full flex items-center gap-4 text-sm font-medium;
+  @apply text-white flex items-center gap-4 text-sm font-light tracking-wider;
 }
 
 /* Cart badge */
@@ -187,4 +187,107 @@
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 60'%3E%3Cpath fill='black' d='M0,0 L1440,0 L1440,40 Q1380,45 1320,35 T1200,40 T1080,35 T960,40 T840,35 T720,40 T600,35 T480,40 T360,35 T240,40 T120,35 T0,40 Z'/%3E%3C/svg%3E");
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
+}
+
+/* Premium Button Glow Effects */
+.btn-glow {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-glow::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.4), transparent);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.btn-glow:hover::before {
+  opacity: 1;
+}
+
+/* Video background container */
+.video-background {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.video-background iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 150%;
+  height: 150%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+/* Cinematic overlay gradient */
+.cinematic-overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(0, 0, 0, 0.6) 0%,
+    rgba(0, 0, 0, 0.3) 40%,
+    rgba(0, 0, 0, 0.4) 60%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+}
+
+/* Vignette effect */
+.vignette {
+  background: radial-gradient(
+    ellipse at center,
+    transparent 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.4) 100%
+  );
+}
+
+/* Smooth scroll indicator animation */
+@keyframes scrollBounce {
+  0%, 100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 0.5;
+  }
+}
+
+.scroll-indicator {
+  animation: scrollBounce 2s ease-in-out infinite;
+}
+
+/* Premium button hover states */
+.premium-btn {
+  position: relative;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.premium-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 0 40px rgba(37, 99, 235, 0.3),
+    0 0 80px rgba(37, 99, 235, 0.1);
+}
+
+/* Letter spacing animation */
+.letter-spacing-hover {
+  transition: letter-spacing 0.3s ease;
+}
+
+.letter-spacing-hover:hover {
+  letter-spacing: 0.25em;
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { User, Lock } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
 
@@ -7,64 +6,60 @@ interface HeaderProps {
   onNavigate: (page: string) => void;
 }
 
+const navItems = [
+  { id: 'sfx', label: 'SFX' },
+  { id: 'color', label: 'COLOR' },
+];
+
 export function Header({ currentPage, onNavigate }: HeaderProps) {
   const { totalItems, setIsCartOpen } = useCart();
 
-  const navItems = [
-    { id: 'sfx', label: 'SFX' },
-    { id: 'color', label: 'COLOR' },
-    { id: 'scribble', label: 'SCRIBBLE' },
-    { id: 'vhs', label: 'VHS' },
-  ];
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 px-4 py-4">
+    <header className="fixed top-0 left-0 right-0 z-40 px-8 py-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         {/* Logo */}
-        <button 
-          onClick={() => onNavigate('home')}
-          className="flex flex-col items-center gap-1 group"
-        >
-          <div className="flex items-end gap-0.5">
-            <div className="w-2 h-4 bg-white rounded-full" />
-            <div className="w-3 h-6 bg-white rounded-full" />
-            <div className="w-2 h-4 bg-white rounded-full" />
-          </div>
-          <span className="text-white text-xs font-medium tracking-wider">filmkid</span>
+        <button onClick={() => onNavigate('home')}>
+          <img
+            src="/logo.png"
+            alt="LIONNN LABS"
+            className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
+          />
         </button>
 
-        {/* Navigation Pill */}
-        <nav className="nav-pill hidden md:flex">
+        {/* Transparent Navigation */}
+        <nav className="nav-pill hidden md:flex items-center">
           {navItems.map((item, index) => (
-            <React.Fragment key={item.id}>
+            <div key={item.id} className="flex items-center">
               <button
                 onClick={() => onNavigate(item.id)}
-                className={`hover:opacity-80 transition-opacity ${
-                  currentPage === item.id ? 'underline underline-offset-4' : ''
+                className={`hover:opacity-80 transition-opacity tracking-[0.2em] px-6 text-white/80 hover:text-white uppercase ${
+                  currentPage === item.id ? 'underline underline-offset-4 text-white' : ''
                 }`}
               >
                 {item.label}
               </button>
               {index < navItems.length - 1 && (
-                <span className="text-white/60">•</span>
+                <span className="text-white/40 select-none">•</span>
               )}
-            </React.Fragment>
+            </div>
           ))}
         </nav>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-3">
-          <button 
+        <div className="flex items-center gap-6">
+          <button
             onClick={() => setIsCartOpen(true)}
-            className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors"
+            className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 text-xs tracking-wider uppercase"
           >
             <Lock className="w-4 h-4" />
             <span>CART</span>
             {totalItems > 0 && (
-              <span className="cart-badge static ml-1">{totalItems}</span>
+              <span className="bg-white/20 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center">
+                {totalItems}
+              </span>
             )}
           </button>
-          <button className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+          <button className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 text-xs tracking-wider uppercase">
             <User className="w-4 h-4" />
             <span>LOG IN</span>
           </button>
