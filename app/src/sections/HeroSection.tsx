@@ -11,7 +11,7 @@ const navItems = [
   { id: 'color', label: 'COLOR' },
 ];
 
-const VIMEO_VIDEO_ID = '1112585023';
+const VIMEO_VIDEO_ID = '748944647';
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
   const { totalItems, setIsCartOpen } = useCart();
@@ -20,17 +20,9 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
     <section className="relative w-screen h-screen overflow-hidden bg-black">
       {/* FULLSCREEN VIDEO BACKGROUND */}
       <div className="absolute inset-0 w-full h-full">
-        <iframe
-          src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&portrait=0&dnt=1`}
-          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-          style={{
-            width: '177.78vh',
-            height: '100vh',
-            minWidth: '100vw',
-            minHeight: '56.25vw',
-            pointerEvents: 'none',
-            border: 'none',
-          }}
+<iframe
+  src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?background=1&autoplay=1&loop=1&muted=1&controls=0`}
+  className="absolute inset-0 w-full h-full scale-125"
           allow="autoplay; fullscreen; picture-in-picture"
           title="Background Video"
         />
