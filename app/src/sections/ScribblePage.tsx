@@ -41,7 +41,7 @@ export function ScribblePage({ onNavigate: _onNavigate }: ScribblePageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Filmkid Scribble
+            Lionnn Labs Scribble
           </motion.h1>
           <motion.p 
             className="font-sketchy text-2xl text-white/90 mb-8"

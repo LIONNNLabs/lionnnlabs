@@ -45,28 +45,28 @@ function BeforeAfterSlider({ before, after, alt }: BeforeAfterSliderProps) {
   }, []);
 
   return (
-    <div 
+    <div
       ref={containerRef}
       className="relative aspect-video rounded-lg overflow-hidden cursor-ew-resize select-none"
       onMouseDown={handleMouseDown}
       onMouseUp={handleMouseUp}
       onMouseMove={handleMouseMove}
-      onTouchMove={handleTouchMove}
       onTouchStart={handleMouseDown}
       onTouchEnd={handleMouseUp}
+      onTouchMove={handleTouchMove}
     >
-      <img 
-        src={before} 
+      <img
+        src={before}
         alt={`${alt} before`}
         className="absolute inset-0 w-full h-full object-cover"
         draggable={false}
       />
-      <div 
+      <div
         className="absolute inset-0 overflow-hidden"
         style={{ clipPath: `inset(0 ${100 - sliderPosition}% 0 0)` }}
       >
-        <img 
-          src={after} 
+        <img
+          src={after}
           alt={`${alt} after`}
           className="absolute inset-0 w-full h-full object-cover"
           draggable={false}
@@ -74,7 +74,7 @@ function BeforeAfterSlider({ before, after, alt }: BeforeAfterSliderProps) {
       </div>
       <div className="absolute top-4 left-4 bg-black/60 text-white text-xs px-2 py-1 rounded font-medium">BEFORE</div>
       <div className="absolute top-4 right-4 bg-black/60 text-white text-xs px-2 py-1 rounded font-medium">AFTER</div>
-      <div 
+      <div
         className="absolute top-0 bottom-0 w-1 bg-white cursor-ew-resize shadow-lg"
         style={{ left: `${sliderPosition}%`, transform: 'translateX(-50%)' }}
       >
@@ -104,30 +104,30 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
   const { addToCart, totalItems, setIsCartOpen } = useCart();
   const colorProducts = products.filter(p => p.category === 'color');
 
+  useEffect(() => {
+    onNavigate && onNavigate('home');
+  }, [onNavigate]);
+
   return (
-    <div className="min-h-screen bg-neutral-100">
-      {/* CINEMATIC FULLSCREEN HERO SECTION */}
-      <section className="relative h-screen w-full overflow-hidden">
-        {/* FULLSCREEN VIDEO BACKGROUND */}
-        <div className="absolute inset-0 w-full h-full bg-black">
-          <iframe
-            src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&portrait=0&dnt=1`}
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
-            style={{
-              width: '177.78vh',
-              height: '100vh',
-              minWidth: '100vw',
-              minHeight: '56.25vw',
-              pointerEvents: 'none',
-              border: 'none',
-            }}
-            allow="autoplay; fullscreen; picture-in-picture"
-            title="Color Background Video"
-          />
-        </div>
+    <>
+      <div className="relative w-full h-screen overflow-hidden bg-black">
+        <iframe
+          src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1&controls=0&playsinline=1&portrait=0`}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
+          style={{
+            width: '177.78vh',
+            height: '100vh',
+            minWidth: '100vw',
+            minHeight: '56.25vw',
+            pointerEvents: 'none',
+            border: 'none',
+          }}
+          allow="autoplay; fullscreen; picture-in-picture"
+          title="Background Video"
+        />
 
         {/* Subtle dark gradient overlay */}
-        <div 
+        <div
           className="absolute inset-0 z-10"
           style={{
             background: 'linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,0.5) 100%)'
@@ -143,15 +143,19 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
         >
           {navItems.map((item, index) => (
             <div key={item.id} className="flex items-center">
-              <button
-                onClick={() => onNavigate?.(item.id)}
-                className={`group relative text-white/80 hover:text-white transition-all duration-500 tracking-[0.25em] text-sm font-light uppercase ${
-                  item.id === 'color' ? 'text-white' : ''
-                }`}
-              >
-                {item.label}
-                <span className="absolute inset-0 -m-3 bg-white/0 rounded-full blur-lg transition-all duration-500 group-hover:bg-white/10" />
-              </button>
+              {item.id === 'color' ? (
+                <span className="relative text-white/30 tracking-[0.25em] text-sm font-light uppercase cursor-not-allowed select-none">
+                  {item.label}
+                </span>
+              ) : (
+                <button
+                  onClick={() => onNavigate?.(item.id)}
+                  className="group relative text-white/80 hover:text-white transition-all duration-500 tracking-[0.25em] text-sm font-light uppercase"
+                >
+                  {item.label}
+                  <span className="absolute inset-0 -m-3 bg-white/0 rounded-full blur-lg transition-all duration-500 group-hover:bg-white/10" />
+                </button>
+              )}
               {index < navItems.length - 1 && (
                 <span className="text-white/40 select-none ml-12">•</span>
               )}
@@ -166,7 +170,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
         >
-          <button 
+          <button
             onClick={() => setIsCartOpen(true)}
             className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 text-xs tracking-wider uppercase"
           >
@@ -194,7 +198,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           <button onClick={() => onNavigate?.('home')}>
             <img
               src="/logo.png"
-              alt="Filmkid"
+              alt="Lionn Labs"
               className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
             />
           </button>
@@ -202,15 +206,16 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
 
         {/* HERO CONTENT */}
         <div className="absolute inset-0 z-20 flex flex-col items-center justify-center">
-          <motion.h1 
+          <motion.h1
             className="text-5xl md:text-7xl lg:text-8xl font-extralight text-white tracking-[0.15em] uppercase mb-4"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Filmkid 16
+            Lionn Labs 16
           </motion.h1>
-          <motion.p 
+
+          <motion.p
             className="font-sketchy text-2xl text-white/90 mb-8"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -218,6 +223,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           >
             POWERGRADE & LUT
           </motion.p>
+
           <motion.button
             onClick={() => {
               const productsSection = document.getElementById('color-products');
@@ -230,22 +236,23 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           >
             BUY NOW
           </motion.button>
-          <motion.p 
+
+          <motion.p
             className="text-white/80 max-w-xl mt-8 text-sm"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Filmkid 16 brings a classic 16mm film look to any editing software. Simply drag and drop to add cinematic grain and color to your footage, achieving a vintage aesthetic in modern digital formats.
+            Lionn Labs 16 brings a classic 16mm film look to any editing software. Simply drag and drop to add cinematic grain and color to your footage.
           </motion.p>
         </div>
-      </section>
+      </div>
 
       {/* Product Info Section */}
       <section className="py-16 px-4 max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-12">
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-blue-600 mb-4">Filmkid 16 LUT</h3>
+            <h3 className="text-2xl font-bold text-blue-600 mb-4">Lionn Labs 16 LUT</h3>
             <p className="text-blue-500 mb-8">
               Simple drag and drop the LUT for any video editing software. Works with Premiere Pro, After Effects, Final Cut and Cap Cut.
             </p>
@@ -257,14 +264,14 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
                     <div className="w-4 h-10 bg-blue-600 rounded" />
                     <div className="w-3 h-6 bg-blue-600 rounded" />
                   </div>
-                  <span className="text-xs text-blue-600">Filmkid 16.Cube</span>
+                  <span className="text-xs text-blue-600">Lionn Labs 16.Cube</span>
                 </div>
               </div>
             </div>
           </div>
 
           <div className="text-center">
-            <h3 className="text-2xl font-bold text-blue-600 mb-4">Filmkid 16 Powergrade</h3>
+            <h3 className="text-2xl font-bold text-blue-600 mb-4">Lionn Labs 16 Powergrade</h3>
             <p className="text-blue-500 mb-8">
               Our custom Davinci resolve powergrade made for even more control and customization over your final look.
             </p>
@@ -300,8 +307,8 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
           {testimonials.slice(3, 6).map((testimonial) => (
             <div key={testimonial.id} className="text-center text-white">
-              <img 
-                src={testimonial.avatar} 
+              <img
+                src={testimonial.avatar}
                 alt={testimonial.name}
                 className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
               />
@@ -326,8 +333,8 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           {colorProducts.map((product) => (
             <div key={product.id} className="product-card bg-gray-900 rounded-lg overflow-hidden">
               <div className="relative h-56">
-                <img 
-                  src={product.image} 
+                <img
+                  src={product.image}
                   alt={product.name}
                   className="w-full h-full object-cover"
                 />
@@ -345,20 +352,18 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
                 </div>
                 <div className="absolute bottom-4 left-4 right-4">
                   <h3 className="text-white font-bold text-xl mb-2">{product.name}</h3>
-                  {product.includes && (
-                    <ul className="text-gray-300 text-xs space-y-1">
-                      {product.includes.slice(0, 4).map((item, i) => (
-                        <li key={i}>{item}</li>
-                      ))}
-                    </ul>
-                  )}
+                  <p className="text-gray-300 text-sm space-y-1">
+                    {product.includes?.slice(0, 4).map((item, i) => (
+                      <span key={i} className="block">• {item}</span>
+                    ))}
+                  </p>
                 </div>
               </div>
               <div className="p-4 text-center">
-                <p className="text-white text-3xl font-bold mb-4">$ {product.price.toFixed(2)}</p>
+                <p className="text-white font-bold text-3xl mb-4">${product.price.toFixed(2)}</p>
                 <button
                   onClick={() => addToCart(product)}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors w-full"
                 >
                   BUY NOW
                 </button>
@@ -367,27 +372,24 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           ))}
         </div>
 
-        <div className="mt-8">
-          <div className="product-card bg-black rounded-lg overflow-hidden max-w-3xl mx-auto">
-            <div className="p-8 text-center">
-              <h3 className="text-white font-bold text-2xl mb-4">Filmkid 16 Complete Bundle</h3>
-              <p className="text-gray-400 mb-6">Get both the LUT and Powergrade for the ultimate film look workflow</p>
-              <div className="flex justify-center gap-8 mb-6">
-                <div className="text-center">
-                  <p className="text-gray-500 line-through">$218.00</p>
-                  <p className="text-white text-4xl font-bold">$149.00</p>
-                </div>
-              </div>
-              <button
-                onClick={() => {
-                  addToCart(colorProducts[0]);
-                  addToCart(colorProducts[1]);
-                }}
-                className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
-              >
-                BUY BUNDLE
-              </button>
+        {/* Bundle */}
+        <div className="mt-12 bg-gray-900 rounded-lg overflow-hidden max-w-3xl mx-auto">
+          <div className="p-8 text-center">
+            <h3 className="text-white font-bold text-2xl mb-4">Lionn Labs 16 Complete Bundle</h3>
+            <p className="text-gray-400 mb-6">Get both the LUT and Powergrade for the ultimate film look workflow.</p>
+            <div className="flex justify-center gap-4 mb-6">
+              <p className="text-gray-500 line-through">$218.00</p>
+              <p className="text-white font-bold text-3xl">$149.00</p>
             </div>
+            <button
+              onClick={() => {
+                addToCart(colorProducts[0]);
+                addToCart(colorProducts[1]);
+              }}
+              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors w-full"
+            >
+              BUY BUNDLE
+            </button>
           </div>
         </div>
       </section>
@@ -397,7 +399,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
         <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center">
             <h3 className="text-white text-4xl md:text-6xl font-bold text-center">
-              How To Use<br />Filmkid 16
+              How To Use<br />Lionn Labs 16
             </h3>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">
@@ -427,6 +429,6 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           ))}
         </Accordion>
       </section>
-    </div>
+    </>
   );
 }

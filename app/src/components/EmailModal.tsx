@@ -38,7 +38,7 @@ export function EmailModal({ isOpen, onClose }: EmailModalProps) {
             <div className="w-3 h-6 bg-black rounded-full" />
             <div className="w-2 h-4 bg-black rounded-full" />
           </div>
-          <span className="text-black text-xs font-medium tracking-wider mb-6">filmkid</span>
+          <span className="text-black text-xs font-medium tracking-wider mb-6">Lionnn Labs</span>
 
           {/* Title */}
           <h2 className="font-sketchy text-3xl text-blue-600 mb-2">

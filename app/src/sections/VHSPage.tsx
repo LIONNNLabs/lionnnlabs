@@ -41,7 +41,7 @@ export function VHSPage({ onNavigate: _onNavigate }: VHSPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Filmkid VHS
+            Lionnn Labs VHS
           </motion.h1>
           <motion.p 
             className="font-sketchy text-2xl text-white/90 mb-8"

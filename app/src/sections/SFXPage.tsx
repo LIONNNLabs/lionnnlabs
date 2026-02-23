@@ -125,7 +125,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
           <button onClick={() => onNavigate?.('home')}>
             <img
               src="/logo.png"
-              alt="Filmkid"
+              alt="Lionnn Labs"
               className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
             />
           </button>
@@ -139,7 +139,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Filmkid SFX
+            Lionnn Labs SFX
           </motion.h1>
           <motion.p 
             className="font-sketchy text-2xl text-white/90 mb-8"
@@ -232,10 +232,10 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
             </button>
           </div>
           <div className="absolute bottom-4 left-4 right-4 text-center">
-            <p className="text-white font-medium">Filmkid Presents</p>
+            <p className="text-white font-medium">Lionnn Labs Presents</p>
           </div>
         </div>
-        <p className="text-center text-blue-600 font-medium mt-4">Filmkid SFX Demo</p>
+        <p className="text-center text-blue-600 font-medium mt-4">Lionnn Labs SFX Demo</p>
       </section>
 
       {/* Testimonials Section */}

@@ -3,7 +3,7 @@ import type { Product, AudioSample, Testimonial, FAQ, BeforeAfterImage } from '@
 export const products: Product[] = [
   {
     id: 'sfx-whoosh',
-    name: 'Filmkid Whoosh SFX Pack',
+    name: 'Lionnn Labs Whoosh SFX Pack',
     description: 'A curated selection of 20 cinematic whooshes to add motion, energy, and impact.',
     price: 29.00,
     category: 'sfx',
@@ -13,7 +13,7 @@ export const products: Product[] = [
   },
   {
     id: 'sfx-riser',
-    name: 'Filmkid Riser SFX Pack',
+    name: 'Lionnn Labs Riser SFX Pack',
     description: '15 Powerful risers engineered to build tension and anticipation.',
     price: 29.00,
     category: 'sfx',
@@ -23,7 +23,7 @@ export const products: Product[] = [
   },
   {
     id: 'sfx-clicks',
-    name: 'Filmkid Clicks SFX Pack',
+    name: 'Lionnn Labs Clicks SFX Pack',
     description: '15 of our favorite high quality studio grade clicks to elevate any type of production.',
     price: 29.00,
     category: 'sfx',
@@ -33,7 +33,7 @@ export const products: Product[] = [
   },
   {
     id: 'sfx-bundle',
-    name: 'Filmkid SFX Bundle',
+    name: 'Lionnn Labs SFX Bundle',
     description: 'All 3 packs in one — Whoosh, Riser & Clicks.',
     price: 69.00,
     category: 'sfx',
@@ -43,27 +43,27 @@ export const products: Product[] = [
   },
   {
     id: 'color-lut',
-    name: 'Filmkid 16 LUT',
+    name: 'Lionnn Labs 16 LUT',
     description: 'Simple drag and drop the LUT for any video editing software. Works with Premiere Pro, After Effects, Final Cut and Cap Cut.',
     price: 89.00,
     category: 'color',
     image: 'https://images.unsplash.com/photo-1542038784456-1ea8e935640e?w=800&q=80',
     features: ['16mm film emulation', '7 camera profiles', 'Easy drag-and-drop'],
-    includes: ['Filmkid 16 LUTs (for 7 camera profiles)', '3x custom Grain Overlays', '1x Film Damage Overlay', 'Tutorial Videos', 'Example Grading Clips', 'Installation Guide (PDF)', 'Exclusive Color Settings Guide (PDF)', 'Monitoring LUTs']
+    includes: ['Lionnn Labs 16 LUTs (for 7 camera profiles)', '3x custom Grain Overlays', '1x Film Damage Overlay', 'Tutorial Videos', 'Example Grading Clips', 'Installation Guide (PDF)', 'Exclusive Color Settings Guide (PDF)', 'Monitoring LUTs']
   },
   {
     id: 'color-powergrade',
-    name: 'Filmkid 16 Powergrade',
+    name: 'Lionnn Labs 16 Powergrade',
     description: 'Our custom Davinci resolve powergrade made for even more control and customization over your final look.',
     price: 129.00,
     category: 'color',
     image: 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=800&q=80',
     features: ['DaVinci Resolve node tree', 'Full customization', 'Professional workflow'],
-    includes: ['Filmkid 16 PowerGrade (.dpx + .drx)', 'Tutorial Video', 'Full Grading Walkthrough', 'Example Grading Clips', 'Installation Guide (PDF)', 'Exclusive Color Settings Guide (PDF)', 'Monitoring LUTs']
+    includes: ['Lionnn Labs 16 PowerGrade (.dpx + .drx)', 'Tutorial Video', 'Full Grading Walkthrough', 'Example Grading Clips', 'Installation Guide (PDF)', 'Exclusive Color Settings Guide (PDF)', 'Monitoring LUTs']
   },
   {
     id: 'scribble-pack',
-    name: 'Filmkid Scribble Pack',
+    name: 'Lionnn Labs Scribble Pack',
     description: 'Hand-drawn scribble elements and doodles for creative video overlays.',
     price: 19.00,
     category: 'scribble',
@@ -73,7 +73,7 @@ export const products: Product[] = [
   },
   {
     id: 'vhs-pack',
-    name: 'Filmkid VHS Pack',
+    name: 'Lionnn Labs VHS Pack',
     description: 'Authentic VHS effects, glitches, and overlays for retro aesthetics.',
     price: 24.00,
     category: 'vhs',
@@ -123,7 +123,7 @@ export const testimonials: Testimonial[] = [
     handle: '@bilgesuisik',
     role: 'FILMMAKER',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80',
-    content: 'As someone who dreams of making films, I want the moments I capture to be more than just watchable, I want them to be felt. Turning them into something that looks like a film is exactly what brings those feelings to life. Filmkid16 is easy to use, the results are beautiful, and most importantly - the process no longer feels like a technical struggle, but like a creative game that feeds the playful kid inside of me.'
+    content: 'As someone who dreams of making films, I want the moments I capture to be more than just watchable, I want them to be felt. Turning them into something that looks like a film is exactly what brings those feelings to life. Lionnn Labs16 is easy to use, the results are beautiful, and most importantly - the process no longer feels like a technical struggle, but like a creative game that feeds the playful kid inside of me.'
   },
   {
     id: '5',
@@ -131,7 +131,7 @@ export const testimonials: Testimonial[] = [
     handle: '@kylemarcoe',
     role: 'CINEMATOGRAPHER',
     avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&q=80',
-    content: 'FilmKid Powergrade is awesome! I can\'t rave about it enough. I tried it on some shots from an older commercial, and it made them look WAY better than my own color grading. My favorite part? How easy it is to tweak the settings and nodes to fit your style while also providing lots of flexibility to make it unique to your own style. Everything\'s right there, super straightforward! As a cinematographer who\'s not a full-on colorist, this Powergrade makes me feel like a pro colorist in no time.'
+    content: 'Lionnn Labs Powergrade is awesome! I can\'t rave about it enough. I tried it on some shots from an older commercial, and it made them look WAY better than my own color grading. My favorite part? How easy it is to tweak the settings and nodes to fit your style while also providing lots of flexibility to make it unique to your own style. Everything\'s right there, super straightforward! As a cinematographer who\'s not a full-on colorist, this Powergrade makes me feel like a pro colorist in no time.'
   }
 ];
 
@@ -143,7 +143,7 @@ export const sfxFAQs: FAQ[] = [
   },
   {
     id: '2',
-    question: 'What\'s the difference between Filmkid Whoosh, Riser, and Clicks?',
+    question: 'What\'s the difference between Lionnn Labs Whoosh, Riser, and Clicks?',
     answer: 'Whoosh sounds are perfect for adding motion and transitions, Risers build tension and anticipation for dramatic moments, and Clicks provide crisp UI sounds and accent elements. Each pack serves a different purpose in your sound design toolkit.'
   },
   {
@@ -161,13 +161,13 @@ export const colorFAQs: FAQ[] = [
   },
   {
     id: '2',
-    question: 'What cameras does Filmkid16 work with?',
-    answer: 'Filmkid16 works with any camera. For optimal results, we recommend shooting in a LOG/RAW profile and using the correct Color Space Transform (CST) settings in DaVinci Resolve. To make things even easier, we\'ve created dedicated PowerGrades/LUTs for popular camera profiles—including Blackmagic Gen 5, Sony S-Log3, DJI D-Log, Canon Log 3, Rec.709, RED Log3G10, and ARRI LogC3.'
+    question: 'What cameras does Lionnn Labs16 work with?',
+    answer: 'Lionnn Labs16 works with any camera. For optimal results, we recommend shooting in a LOG/RAW profile and using the correct Color Space Transform (CST) settings in DaVinci Resolve. To make things even easier, we\'ve created dedicated PowerGrades/LUTs for popular camera profiles—including Blackmagic Gen 5, Sony S-Log3, DJI D-Log, Canon Log 3, Rec.709, RED Log3G10, and ARRI LogC3.'
   },
   {
     id: '3',
-    question: 'I\'m new to color grading—can I still use Filmkid16?',
-    answer: 'Absolutely. Filmkid16 is built for both beginners and experienced colorists. The LUTs are plug-and-play, while the PowerGrades come with clearly labeled nodes to guide you through the grading flow. We also include a walkthrough so you can get cinematic results with confidence, no matter your experience level.'
+    question: 'I\'m new to color grading—can I still use Lionnn Labs16?',
+    answer: 'Absolutely. Lionnn Labs16 is built for both beginners and experienced colorists. The LUTs are plug-and-play, while the PowerGrades come with clearly labeled nodes to guide you through the grading flow. We also include a walkthrough so you can get cinematic results with confidence, no matter your experience level.'
   }
 ];
 

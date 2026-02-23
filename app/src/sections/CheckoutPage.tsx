@@ -40,7 +40,7 @@ export function CheckoutPage({ onNavigate }: CheckoutPageProps) {
               <div className="w-3 h-6 bg-blue-600 rounded-full" />
               <div className="w-2 h-4 bg-blue-600 rounded-full" />
             </div>
-            <span className="text-blue-600 text-xs font-medium tracking-wider">filmkid</span>
+            <span className="text-blue-600 text-xs font-medium tracking-wider">Lionnn Labs</span>
           </button>
         </div>
 
@@ -246,7 +246,7 @@ export function CheckoutPage({ onNavigate }: CheckoutPageProps) {
                 </div>
                 <div className="flex-1">
                   <h4 className="font-medium">{item.product.name}</h4>
-                  <p className="text-sm text-gray-500">Filmkid {item.product.category.toUpperCase()}</p>
+                  <p className="text-sm text-gray-500">Lionnn Labs {item.product.category.toUpperCase()}</p>
                 </div>
                 <div className="text-right">
                   <p className="font-medium">${(item.product.price * item.quantity).toFixed(2)}</p>

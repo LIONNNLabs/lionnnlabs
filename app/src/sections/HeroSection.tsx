@@ -1,12 +1,15 @@
 import { motion } from 'framer-motion';
 import { User, Lock } from 'lucide-react';
 import { useCart } from '@/context/CartContext';
+import { useState, useEffect, useRef } from 'react';
+
+type PageId = 'sfx' | 'color';
 
 interface HeroSectionProps {
-  onNavigate: (page: string) => void;
+  onNavigate: (page: Exclude<PageId, 'color'>) => void;
 }
 
-const navItems = [
+const navItems: { id: PageId; label: string }[] = [
   { id: 'sfx', label: 'SFX' },
   { id: 'color', label: 'COLOR' },
 ];
@@ -15,21 +18,37 @@ const VIMEO_VIDEO_ID = '748944647';
 
 export function HeroSection({ onNavigate }: HeroSectionProps) {
   const { totalItems, setIsCartOpen } = useCart();
+  const [videoLoaded, setVideoLoaded] = useState(false);
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  useEffect(() => {
+    return () => {
+      if (iframeRef.current) {
+        iframeRef.current.src = '';
+      }
+    };
+  }, []);
 
   return (
     <section className="relative w-screen h-screen overflow-hidden bg-black">
       {/* FULLSCREEN VIDEO BACKGROUND */}
       <div className="absolute inset-0 w-full h-full">
-<iframe
-  src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?background=1&autoplay=1&loop=1&muted=1&controls=0`}
-  className="absolute inset-0 w-full h-full scale-125"
+        <iframe
+          ref={iframeRef}
+          src={`https://player.vimeo.com/video/${VIMEO_VIDEO_ID}?background=1&autoplay=1&loop=1&muted=1&controls=0`}
+          className="absolute inset-0 w-full h-full scale-125"
+          style={{ 
+            opacity: videoLoaded ? 1 : 0,
+            transition: 'opacity 0.8s ease'
+          }}
           allow="autoplay; fullscreen; picture-in-picture"
           title="Background Video"
+          onLoad={() => setVideoLoaded(true)}
         />
       </div>
 
       {/* Dark overlay for text readability */}
-      <div className="absolute inset-0 bg-black/30 z-10" />
+      <div className="absolute inset-0 bg-black/40 md:bg-black/30 z-10" />
 
       {/* Subtle bottom gradient for text readability */}
       <div
@@ -39,7 +58,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
         }}
       />
 
-      {/* TOP BAR - Actions only (no logo on homepage) */}
+      {/* TOP BAR - Actions only */}
       <div className="absolute top-0 right-0 z-30 flex items-center gap-6 py-6 px-8">
         <motion.div
           className="flex items-center gap-6"
@@ -59,6 +78,7 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
               </span>
             )}
           </button>
+          
           <button className="text-white/70 hover:text-white transition-colors duration-300 flex items-center gap-2 text-xs tracking-wider uppercase">
             <User className="w-4 h-4" />
             <span>LOG IN</span>
@@ -92,13 +112,23 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
-              onClick={() => onNavigate(item.id)}
-              className="text-white/60 hover:text-white text-sm font-light tracking-[0.3em] uppercase transition-all duration-300 hover:scale-[1.03]"
+              disabled={item.id === 'color'}
+              onClick={() => {
+                if (item.id !== 'color') {
+                  onNavigate(item.id);
+                }
+              }}
+              className={`text-sm font-light tracking-[0.3em] uppercase transition-all duration-300 ${
+                item.id === 'color'
+                  ? 'text-white/20 cursor-not-allowed'
+                  : 'text-white/60 hover:text-white hover:scale-[1.03]'
+              }`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
+              title={item.id === 'color' ? 'Coming soon' : `Browse ${item.label}`}
             >
-              {item.label}
+              {item.id === 'color' ? 'COLOR | COMING SOON' : item.label}
             </motion.button>
           ))}
         </motion.nav>
