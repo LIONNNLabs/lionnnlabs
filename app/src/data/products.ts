@@ -156,18 +156,18 @@ export const sfxFAQs: FAQ[] = [
 export const colorFAQs: FAQ[] = [
   {
     id: '1',
-    question: 'What\'s the difference between the PowerGrade and the LUT?',
-    answer: 'PowerGrades are custom grading setups built specifically for DaVinci Resolve. They give you full control through node structures, allowing precise adjustments to color, contrast, grain, and more—perfect for achieving a refined film look. LUTs, on the other hand, are more universal and can be used in almost any editing software. They\'re fast and easy to apply but offer less flexibility than PowerGrades.'
+    question: 'What is a PowerGrade?',
+    answer: 'A PowerGrade is a complete grading setup built for DaVinci Resolve. Instead of a locked look, you get the full node tree, so you can adjust color, contrast, grain and more to make the look your own. It works in both the free version and DaVinci Resolve Studio.'
   },
   {
     id: '2',
     question: 'What cameras does Lionnn Labs16 work with?',
-    answer: 'Lionnn Labs16 works with any camera. For optimal results, we recommend shooting in a LOG/RAW profile and using the correct Color Space Transform (CST) settings in DaVinci Resolve. To make things even easier, we\'ve created dedicated PowerGrades/LUTs for popular camera profiles—including Blackmagic Gen 5, Sony S-Log3, DJI D-Log, Canon Log 3, Rec.709, RED Log3G10, and ARRI LogC3.'
+    answer: 'Lionnn Labs16 works with any camera. For optimal results, we recommend shooting in a LOG/RAW profile and using the correct Color Space Transform (CST) settings in DaVinci Resolve. To make things even easier, we\'ve created dedicated PowerGrades for popular camera profiles—including Blackmagic Gen 5, Sony S-Log3, DJI D-Log, Canon Log 3, Rec.709, RED Log3G10, and ARRI LogC3.'
   },
   {
     id: '3',
     question: 'I\'m new to color grading—can I still use Lionnn Labs16?',
-    answer: 'Absolutely. Lionnn Labs16 is built for both beginners and experienced colorists. The LUTs are plug-and-play, while the PowerGrades come with clearly labeled nodes to guide you through the grading flow. We also include a walkthrough so you can get cinematic results with confidence, no matter your experience level.'
+    answer: 'Absolutely. Lionnn Labs16 is built for both beginners and experienced colorists. The PowerGrade comes with clearly labeled nodes to guide you through the grading flow. We also include a walkthrough so you can get cinematic results with confidence, no matter your experience level.'
   }
 ];
 

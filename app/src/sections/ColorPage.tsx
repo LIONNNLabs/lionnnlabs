@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import { Play, User, Lock } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { products, testimonials, colorFAQs, beforeAfterImages } from '@/data/products';
+import { products, colorFAQs, beforeAfterImages } from '@/data/products';
 import { useCart } from '@/context/CartContext';
 import {
   Accordion,
@@ -96,17 +96,13 @@ interface ColorPageProps {
 const VIMEO_VIDEO_ID = '1112585023';
 
 const navItems = [
-  { id: 'sfx', label: 'SFX' },
-  { id: 'color', label: 'COLOR' },
+  { id: 'color', label: 'POWERGRADE' },
+  { id: 'sfx', label: 'SFX · SOON' },
 ];
 
 export function ColorPage({ onNavigate }: ColorPageProps) {
   const { addToCart, totalItems, setIsCartOpen } = useCart();
-  const colorProducts = products.filter(p => p.category === 'color');
-
-  useEffect(() => {
-    onNavigate && onNavigate('home');
-  }, [onNavigate]);
+  const powergrade = products.find(p => p.id === 'color-powergrade')!;
 
   return (
     <>
@@ -143,7 +139,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
         >
           {navItems.map((item, index) => (
             <div key={item.id} className="flex items-center">
-              {item.id === 'color' ? (
+              {item.id === 'sfx' ? (
                 <span className="relative text-white/30 tracking-[0.25em] text-sm font-light uppercase cursor-not-allowed select-none">
                   {item.label}
                 </span>
@@ -198,7 +194,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           <button onClick={() => onNavigate?.('home')}>
             <img
               src="/logo.png"
-              alt="Lionn Labs"
+              alt="Lionnn Labs"
               className="h-7 md:h-10 w-auto object-contain brightness-0 invert opacity-90 hover:opacity-100 transition-opacity"
             />
           </button>
@@ -212,7 +208,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            Lionn Labs 16
+            Lionnn Labs 16
           </motion.h1>
 
           <motion.p
@@ -221,7 +217,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
           >
-            POWERGRADE & LUT
+            DAVINCI RESOLVE POWERGRADE
           </motion.p>
 
           <motion.button
@@ -243,46 +239,23 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            Lionn Labs 16 brings a classic 16mm film look to any editing software. Simply drag and drop to add cinematic grain and color to your footage.
+            {powergrade.description}
           </motion.p>
         </div>
       </div>
 
       {/* Product Info Section */}
-      <section className="py-16 px-4 max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-12">
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-blue-600 mb-4">Lionn Labs 16 LUT</h3>
-            <p className="text-blue-500 mb-8">
-              Simple drag and drop the LUT for any video editing software. Works with Premiere Pro, After Effects, Final Cut and Cap Cut.
-            </p>
-            <div className="flex justify-center">
-              <div className="w-32 h-32 bg-blue-100 rounded-lg flex items-center justify-center">
-                <div className="text-center">
-                  <div className="flex items-end gap-1 justify-center mb-2">
-                    <div className="w-3 h-6 bg-blue-600 rounded" />
-                    <div className="w-4 h-10 bg-blue-600 rounded" />
-                    <div className="w-3 h-6 bg-blue-600 rounded" />
-                  </div>
-                  <span className="text-xs text-blue-600">Lionn Labs 16.Cube</span>
+      <section className="py-16 px-4 max-w-3xl mx-auto">
+        <div className="text-center">
+          <h3 className="text-2xl font-bold text-blue-600 mb-4">{powergrade.name}</h3>
+          <p className="text-blue-500 mb-8">{powergrade.description}</p>
+          <div className="flex justify-center">
+            <div className="grid grid-cols-3 gap-2">
+              {['CST IN', 'EXPOSURE', 'WB', 'FILM LOOK', 'PRINT', 'GRAIN'].map((label, i) => (
+                <div key={i} className="w-20 h-12 bg-gray-800 rounded flex items-center justify-center">
+                  <span className="text-[10px] text-white">{label}</span>
                 </div>
-              </div>
-            </div>
-          </div>
-
-          <div className="text-center">
-            <h3 className="text-2xl font-bold text-blue-600 mb-4">Lionn Labs 16 Powergrade</h3>
-            <p className="text-blue-500 mb-8">
-              Our custom Davinci resolve powergrade made for even more control and customization over your final look.
-            </p>
-            <div className="flex justify-center">
-              <div className="grid grid-cols-3 gap-2">
-                {['CONV', 'EXP', 'WB', 'FK-LAB', 'FK-PRINT', 'SPLIT'].map((label, i) => (
-                  <div key={i} className="w-16 h-12 bg-gray-800 rounded flex items-center justify-center">
-                    <span className="text-xs text-white">{label}</span>
-                  </div>
-                ))}
-              </div>
+              ))}
             </div>
           </div>
         </div>
@@ -302,93 +275,31 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
         </div>
       </section>
 
-      {/* Testimonials Section */}
-      <section className="bg-blue-600 py-16 px-4">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {testimonials.slice(3, 6).map((testimonial) => (
-            <div key={testimonial.id} className="text-center text-white">
-              <img
-                src={testimonial.avatar}
-                alt={testimonial.name}
-                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
-              />
-              <h4 className="font-bold uppercase tracking-wider">{testimonial.handle}</h4>
-              <p className="text-xs uppercase tracking-wider text-white/70 mb-4">{testimonial.role}</p>
-              <p className="text-sm leading-relaxed">{testimonial.content}</p>
-              <div className="mt-4">
-                <div className="flex items-end gap-0.5 justify-center">
-                  <div className="w-1.5 h-3 bg-white rounded-full" />
-                  <div className="w-2 h-5 bg-white rounded-full" />
-                  <div className="w-1.5 h-3 bg-white rounded-full" />
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Products Section */}
-      <section id="color-products" className="py-16 px-4 max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-6">
-          {colorProducts.map((product) => (
-            <div key={product.id} className="product-card bg-gray-900 rounded-lg overflow-hidden">
-              <div className="relative h-56">
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
-                <div className="absolute top-4 left-4 flex gap-2">
-                  {product.id === 'color-lut' ? (
-                    <>
-                      <span className="bg-blue-600 text-white text-xs px-2 py-1 rounded">Ae</span>
-                      <span className="bg-purple-600 text-white text-xs px-2 py-1 rounded">Pr</span>
-                      <span className="bg-pink-600 text-white text-xs px-2 py-1 rounded">Fc</span>
-                    </>
-                  ) : (
-                    <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">DaVinci</span>
-                  )}
-                </div>
-                <div className="absolute bottom-4 left-4 right-4">
-                  <h3 className="text-white font-bold text-xl mb-2">{product.name}</h3>
-                  <p className="text-gray-300 text-sm space-y-1">
-                    {product.includes?.slice(0, 4).map((item, i) => (
-                      <span key={i} className="block">• {item}</span>
-                    ))}
-                  </p>
-                </div>
-              </div>
-              <div className="p-4 text-center">
-                <p className="text-white font-bold text-3xl mb-4">${product.price.toFixed(2)}</p>
-                <button
-                  onClick={() => addToCart(product)}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors w-full"
-                >
-                  BUY NOW
-                </button>
-              </div>
+      <section id="color-products" className="py-16 px-4 max-w-xl mx-auto">
+        <div className="product-card bg-gray-900 rounded-lg overflow-hidden">
+          <div className="relative h-56">
+            <img src={powergrade.image} alt={powergrade.name} className="w-full h-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+            <div className="absolute top-4 left-4">
+              <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">DaVinci Resolve</span>
             </div>
-          ))}
-        </div>
-
-        {/* Bundle */}
-        <div className="mt-12 bg-gray-900 rounded-lg overflow-hidden max-w-3xl mx-auto">
-          <div className="p-8 text-center">
-            <h3 className="text-white font-bold text-2xl mb-4">Lionn Labs 16 Complete Bundle</h3>
-            <p className="text-gray-400 mb-6">Get both the LUT and Powergrade for the ultimate film look workflow.</p>
-            <div className="flex justify-center gap-4 mb-6">
-              <p className="text-gray-500 line-through">$218.00</p>
-              <p className="text-white font-bold text-3xl">$149.00</p>
+            <div className="absolute bottom-4 left-4 right-4">
+              <h3 className="text-white font-bold text-xl">{powergrade.name}</h3>
             </div>
+          </div>
+          <div className="p-6">
+            <ul className="text-gray-300 text-sm space-y-1 mb-6">
+              {powergrade.includes?.map((item, i) => (
+                <li key={i}>• {item}</li>
+              ))}
+            </ul>
+            <p className="text-white font-bold text-3xl mb-4 text-center">${powergrade.price.toFixed(2)}</p>
             <button
-              onClick={() => {
-                addToCart(colorProducts[0]);
-                addToCart(colorProducts[1]);
-              }}
+              onClick={() => addToCart(powergrade)}
               className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors w-full"
             >
-              BUY BUNDLE
+              BUY NOW
             </button>
           </div>
         </div>
@@ -399,7 +310,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
         <div className="relative aspect-video bg-black rounded-lg overflow-hidden">
           <div className="absolute inset-0 flex items-center justify-center">
             <h3 className="text-white text-4xl md:text-6xl font-bold text-center">
-              How To Use<br />Lionn Labs 16
+              How To Use<br />Lionnn Labs 16
             </h3>
           </div>
           <div className="absolute inset-0 flex items-center justify-center">

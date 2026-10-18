@@ -6,13 +6,16 @@ import { useState, useEffect, useRef } from 'react';
 type PageId = 'sfx' | 'color';
 
 interface HeroSectionProps {
-  onNavigate: (page: Exclude<PageId, 'color'>) => void;
+  onNavigate: (page: PageId) => void;
 }
 
 const navItems: { id: PageId; label: string }[] = [
+  { id: 'color', label: 'POWERGRADE' },
   { id: 'sfx', label: 'SFX' },
-  { id: 'color', label: 'COLOR' },
 ];
+
+// Secciones aún no lanzadas
+const COMING_SOON: PageId[] = ['sfx'];
 
 const VIMEO_VIDEO_ID = '748944647';
 
@@ -112,23 +115,23 @@ export function HeroSection({ onNavigate }: HeroSectionProps) {
           {navItems.map((item, index) => (
             <motion.button
               key={item.id}
-              disabled={item.id === 'color'}
+              disabled={COMING_SOON.includes(item.id)}
               onClick={() => {
-                if (item.id !== 'color') {
+                if (!COMING_SOON.includes(item.id)) {
                   onNavigate(item.id);
                 }
               }}
               className={`text-sm font-light tracking-[0.3em] uppercase transition-all duration-300 ${
-                item.id === 'color'
+                COMING_SOON.includes(item.id)
                   ? 'text-white/20 cursor-not-allowed'
                   : 'text-white/60 hover:text-white hover:scale-[1.03]'
               }`}
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.5 + index * 0.1 }}
-              title={item.id === 'color' ? 'Coming soon' : `Browse ${item.label}`}
+              title={COMING_SOON.includes(item.id) ? 'Coming soon' : `Browse ${item.label}`}
             >
-              {item.id === 'color' ? 'COLOR | COMING SOON' : item.label}
+              {COMING_SOON.includes(item.id) ? `${item.label} | COMING SOON` : item.label}
             </motion.button>
           ))}
         </motion.nav>
