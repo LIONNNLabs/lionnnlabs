@@ -56,7 +56,7 @@ export function ScribblePage({ onNavigate: _onNavigate }: ScribblePageProps) {
               const productsSection = document.getElementById('scribble-products');
               productsSection?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            className="bg-lion-red text-white px-8 py-3 rounded-lg font-medium hover:bg-lion-red-dark transition-colors"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -91,19 +91,19 @@ export function ScribblePage({ onNavigate: _onNavigate }: ScribblePageProps) {
                 </div>
               </div>
               <div className="p-4">
-                <p className="text-gray-600 text-sm mb-4">{product.description}</p>
+                <p className="text-neutral-600 text-sm mb-4">{product.description}</p>
                 {product.features && (
-                  <ul className="text-sm text-gray-500 space-y-1 mb-4">
+                  <ul className="text-sm text-neutral-500 space-y-1 mb-4">
                     {product.features.map((feature, i) => (
                       <li key={i}>• {feature}</li>
                     ))}
                   </ul>
                 )}
                 <div className="flex items-center justify-between">
-                  <p className="text-2xl font-bold text-gray-900">$ {product.price.toFixed(2)}</p>
+                  <p className="text-2xl font-bold text-neutral-900">$ {product.price.toFixed(2)}</p>
                   <button
                     onClick={() => addToCart(product)}
-                    className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                    className="bg-lion-red text-white px-6 py-2 rounded-lg font-medium hover:bg-lion-red-dark transition-colors"
                   >
                     BUY NOW
                   </button>
@@ -115,9 +115,9 @@ export function ScribblePage({ onNavigate: _onNavigate }: ScribblePageProps) {
 
         {/* Coming Soon Card */}
         <div className="mt-8">
-          <div className="bg-gray-200 rounded-lg p-8 text-center">
-            <h3 className="text-2xl font-bold text-gray-600 mb-2">More Scribble Packs Coming Soon</h3>
-            <p className="text-gray-500">Sign up for our newsletter to be the first to know!</p>
+          <div className="bg-neutral-200 rounded-lg p-8 text-center">
+            <h3 className="text-2xl font-bold text-neutral-600 mb-2">More Scribble Packs Coming Soon</h3>
+            <p className="text-neutral-500">Sign up for our newsletter to be the first to know!</p>
           </div>
         </div>
       </section>

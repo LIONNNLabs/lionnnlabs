@@ -34,7 +34,7 @@ function AppContent() {
   };
 
   return (
-    <div className="min-h-screen bg-neutral-100">
+    <div className="min-h-screen bg-neutral-950 text-white">
       {/* Main Content - Each page has its own navigation */}
       <main className={currentPage === 'home' ? '' : 'pt-0'}>
         {renderPage()}

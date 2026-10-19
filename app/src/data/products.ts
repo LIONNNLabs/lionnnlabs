@@ -123,7 +123,7 @@ export const testimonials: Testimonial[] = [
     handle: '@bilgesuisik',
     role: 'FILMMAKER',
     avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80',
-    content: 'As someone who dreams of making films, I want the moments I capture to be more than just watchable, I want them to be felt. Turning them into something that looks like a film is exactly what brings those feelings to life. Lionnn Labs16 is easy to use, the results are beautiful, and most importantly - the process no longer feels like a technical struggle, but like a creative game that feeds the playful kid inside of me.'
+    content: 'As someone who dreams of making films, I want the moments I capture to be more than just watchable, I want them to be felt. Turning them into something that looks like a film is exactly what brings those feelings to life. Lionnn Labs 16 is easy to use, the results are beautiful, and most importantly - the process no longer feels like a technical struggle, but like a creative game that feeds the playful kid inside of me.'
   },
   {
     id: '5',
@@ -161,13 +161,13 @@ export const colorFAQs: FAQ[] = [
   },
   {
     id: '2',
-    question: 'What cameras does Lionnn Labs16 work with?',
-    answer: 'Lionnn Labs16 works with any camera. For optimal results, we recommend shooting in a LOG/RAW profile and using the correct Color Space Transform (CST) settings in DaVinci Resolve. To make things even easier, we\'ve created dedicated PowerGrades for popular camera profiles—including Blackmagic Gen 5, Sony S-Log3, DJI D-Log, Canon Log 3, Rec.709, RED Log3G10, and ARRI LogC3.'
+    question: 'What cameras does Lionnn Labs 16 work with?',
+    answer: 'Lionnn Labs 16 works with any camera. For optimal results, we recommend shooting in a LOG/RAW profile and using the correct Color Space Transform (CST) settings in DaVinci Resolve. To make things even easier, we\'ve created dedicated PowerGrades for popular camera profiles—including Blackmagic Gen 5, Sony S-Log3, DJI D-Log, Canon Log 3, Rec.709, RED Log3G10, and ARRI LogC3.'
   },
   {
     id: '3',
-    question: 'I\'m new to color grading—can I still use Lionnn Labs16?',
-    answer: 'Absolutely. Lionnn Labs16 is built for both beginners and experienced colorists. The PowerGrade comes with clearly labeled nodes to guide you through the grading flow. We also include a walkthrough so you can get cinematic results with confidence, no matter your experience level.'
+    question: 'I\'m new to color grading—can I still use Lionnn Labs 16?',
+    answer: 'Absolutely. Lionnn Labs 16 is built for both beginners and experienced colorists. The PowerGrade comes with clearly labeled nodes to guide you through the grading flow. We also include a walkthrough so you can get cinematic results with confidence, no matter your experience level.'
   }
 ];
 

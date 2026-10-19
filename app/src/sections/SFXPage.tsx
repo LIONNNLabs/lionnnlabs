@@ -154,7 +154,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
               const productsSection = document.getElementById('sfx-products');
               productsSection?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            className="bg-lion-red text-white px-8 py-3 rounded-lg font-medium hover:bg-lion-red-dark transition-colors"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -180,7 +180,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
               {/* Play Button */}
               <button
                 onClick={() => togglePlay(sample.id)}
-                className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center text-white hover:bg-blue-700 transition-colors flex-shrink-0"
+                className="w-12 h-12 bg-lion-red rounded-lg flex items-center justify-center text-white hover:bg-lion-red-dark transition-colors flex-shrink-0"
               >
                 {playingSample === sample.id ? (
                   <Pause className="w-5 h-5" />
@@ -191,8 +191,8 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
 
               {/* Sample Info */}
               <div className="flex-1 min-w-0">
-                <h4 className="font-medium text-blue-600">{sample.name}</h4>
-                <p className="text-xs text-blue-400 uppercase tracking-wider">{sample.pack}</p>
+                <h4 className="font-medium text-lion-red">{sample.name}</h4>
+                <p className="text-xs text-lion-red uppercase tracking-wider">{sample.pack}</p>
               </div>
 
               {/* Waveform */}
@@ -200,7 +200,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
                 {sample.waveform.map((height, i) => (
                   <div
                     key={i}
-                    className={`flex-1 bg-blue-400 rounded-full transition-all duration-300 ${
+                    className={`flex-1 bg-lion-red rounded-full transition-all duration-300 ${
                       playingSample === sample.id ? 'waveform-bar' : ''
                     }`}
                     style={{
@@ -212,7 +212,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
               </div>
 
               {/* Duration */}
-              <span className="text-sm text-blue-600 font-medium">{sample.duration}</span>
+              <span className="text-sm text-lion-red font-medium">{sample.duration}</span>
             </div>
           ))}
         </div>
@@ -235,11 +235,11 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
             <p className="text-white font-medium">Lionnn Labs Presents</p>
           </div>
         </div>
-        <p className="text-center text-blue-600 font-medium mt-4">Lionnn Labs SFX Demo</p>
+        <p className="text-center text-lion-red font-medium mt-4">Lionnn Labs SFX Demo</p>
       </section>
 
       {/* Testimonials Section */}
-      <section className="bg-blue-600 py-16 px-4">
+      <section className="bg-lion-red py-16 px-4">
         <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
           {testimonials.slice(0, 3).map((testimonial) => (
             <div key={testimonial.id} className="text-center text-white">
@@ -267,7 +267,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
       <section id="sfx-products" className="py-16 px-4 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-3 gap-6">
           {sfxProducts.filter(p => p.id !== 'sfx-bundle').map((product) => (
-            <div key={product.id} className="product-card bg-gray-900 rounded-lg overflow-hidden">
+            <div key={product.id} className="product-card bg-neutral-900 rounded-lg overflow-hidden">
               <div className="relative h-48">
                 <img 
                   src={product.image} 
@@ -290,11 +290,11 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
                 </div>
               </div>
               <div className="p-4 text-center">
-                <p className="text-gray-400 text-sm mb-4">{product.description}</p>
+                <p className="text-neutral-400 text-sm mb-4">{product.description}</p>
                 <p className="text-white text-2xl font-bold mb-4">$ {product.price.toFixed(2)}</p>
                 <button
                   onClick={() => addToCart(product)}
-                  className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors w-full"
+                  className="bg-lion-red text-white px-6 py-2 rounded-lg font-medium hover:bg-lion-red-dark transition-colors w-full"
                 >
                   BUY NOW
                 </button>
@@ -306,7 +306,7 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
         {/* Bundle Card */}
         {sfxProducts.filter(p => p.id === 'sfx-bundle').map((bundle) => (
           <div key={bundle.id} className="mt-6 max-w-2xl mx-auto">
-            <div className="product-card bg-gray-800 rounded-lg overflow-hidden">
+            <div className="product-card bg-neutral-800 rounded-lg overflow-hidden">
               <div className="relative h-48">
                 <img 
                   src={bundle.image} 
@@ -326,14 +326,14 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
                     ))}
                   </div>
                   <h3 className="text-white font-bold text-xl">{bundle.name}</h3>
-                  <p className="text-gray-300 text-sm">{bundle.description}</p>
+                  <p className="text-neutral-300 text-sm">{bundle.description}</p>
                 </div>
               </div>
               <div className="p-4 text-center">
                 <p className="text-white text-3xl font-bold mb-4">$ {bundle.price.toFixed(2)}</p>
                 <button
                   onClick={() => addToCart(bundle)}
-                  className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                  className="bg-lion-red text-white px-8 py-3 rounded-lg font-medium hover:bg-lion-red-dark transition-colors"
                 >
                   BUY NOW
                 </button>
@@ -346,16 +346,16 @@ export function SFXPage({ onNavigate }: SFXPageProps) {
       {/* FAQ Section */}
       <section className="py-16 px-4 max-w-3xl mx-auto">
         <h2 className="text-center mb-8">
-          <span className="font-sketchy text-blue-600 text-xl block">FREQUENTLY ASKED</span>
-          <span className="text-blue-600 text-3xl font-bold">Questions</span>
+          <span className="font-sketchy text-lion-red text-xl block">FREQUENTLY ASKED</span>
+          <span className="text-lion-red text-3xl font-bold">Questions</span>
         </h2>
         <Accordion type="single" collapsible className="space-y-2">
           {sfxFAQs.map((faq) => (
-            <AccordionItem key={faq.id} value={faq.id} className="border-b border-gray-300">
-              <AccordionTrigger className="text-blue-600 font-semibold text-left hover:no-underline py-4">
+            <AccordionItem key={faq.id} value={faq.id} className="border-b border-neutral-300">
+              <AccordionTrigger className="text-lion-red font-semibold text-left hover:no-underline py-4">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pb-4">
+              <AccordionContent className="text-neutral-600 pb-4">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

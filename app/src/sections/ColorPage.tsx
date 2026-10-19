@@ -80,8 +80,8 @@ function BeforeAfterSlider({ before, after, alt }: BeforeAfterSliderProps) {
       >
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-10 h-10 bg-white rounded-full shadow-lg flex items-center justify-center">
           <div className="flex gap-1">
-            <div className="w-0.5 h-4 bg-gray-400" />
-            <div className="w-0.5 h-4 bg-gray-400" />
+            <div className="w-0.5 h-4 bg-neutral-400" />
+            <div className="w-0.5 h-4 bg-neutral-400" />
           </div>
         </div>
       </div>
@@ -225,7 +225,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
               const productsSection = document.getElementById('color-products');
               productsSection?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            className="bg-white text-black px-8 py-3 rounded-lg font-medium hover:bg-neutral-200 transition-colors"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -234,7 +234,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
           </motion.button>
 
           <motion.p
-            className="text-white/80 max-w-xl mt-8 text-sm"
+            className="text-white/80 max-w-xl mt-8 text-sm text-center"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.6, delay: 0.3 }}
@@ -247,12 +247,12 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
       {/* Product Info Section */}
       <section className="py-16 px-4 max-w-3xl mx-auto">
         <div className="text-center">
-          <h3 className="text-2xl font-bold text-blue-600 mb-4">{powergrade.name}</h3>
-          <p className="text-blue-500 mb-8">{powergrade.description}</p>
+          <h3 className="text-2xl font-bold text-white mb-4">{powergrade.name}</h3>
+          <p className="text-neutral-400 mb-8">{powergrade.description}</p>
           <div className="flex justify-center">
             <div className="grid grid-cols-3 gap-2">
               {['CST IN', 'EXPOSURE', 'WB', 'FILM LOOK', 'PRINT', 'GRAIN'].map((label, i) => (
-                <div key={i} className="w-20 h-12 bg-gray-800 rounded flex items-center justify-center">
+                <div key={i} className="w-20 h-12 bg-neutral-900 border border-neutral-800 rounded flex items-center justify-center">
                   <span className="text-[10px] text-white">{label}</span>
                 </div>
               ))}
@@ -277,19 +277,19 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
 
       {/* Products Section */}
       <section id="color-products" className="py-16 px-4 max-w-xl mx-auto">
-        <div className="product-card bg-gray-900 rounded-lg overflow-hidden">
+        <div className="product-card bg-neutral-900 border border-neutral-800 rounded-lg overflow-hidden">
           <div className="relative h-56">
             <img src={powergrade.image} alt={powergrade.name} className="w-full h-full object-cover" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
             <div className="absolute top-4 left-4">
-              <span className="bg-orange-600 text-white text-xs px-2 py-1 rounded">DaVinci Resolve</span>
+              <span className="bg-lion-red text-white text-xs px-2 py-1 rounded">DaVinci Resolve</span>
             </div>
             <div className="absolute bottom-4 left-4 right-4">
               <h3 className="text-white font-bold text-xl">{powergrade.name}</h3>
             </div>
           </div>
           <div className="p-6">
-            <ul className="text-gray-300 text-sm space-y-1 mb-6">
+            <ul className="text-neutral-300 text-sm space-y-1 mb-6">
               {powergrade.includes?.map((item, i) => (
                 <li key={i}>• {item}</li>
               ))}
@@ -297,7 +297,7 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
             <p className="text-white font-bold text-3xl mb-4 text-center">${powergrade.price.toFixed(2)}</p>
             <button
               onClick={() => addToCart(powergrade)}
-              className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors w-full"
+              className="bg-lion-red text-white px-8 py-3 rounded-lg font-medium hover:bg-lion-red-dark transition-colors w-full"
             >
               BUY NOW
             </button>
@@ -324,16 +324,16 @@ export function ColorPage({ onNavigate }: ColorPageProps) {
       {/* FAQ Section */}
       <section className="py-16 px-4 max-w-3xl mx-auto">
         <h2 className="text-center mb-8">
-          <span className="font-sketchy text-blue-600 text-xl block">FREQUENTLY ASKED</span>
-          <span className="text-blue-600 text-3xl font-bold">Questions</span>
+          <span className="font-sketchy text-lion-red text-xl block">FREQUENTLY ASKED</span>
+          <span className="text-white text-3xl font-bold">Questions</span>
         </h2>
         <Accordion type="single" collapsible className="space-y-2">
           {colorFAQs.map((faq) => (
-            <AccordionItem key={faq.id} value={faq.id} className="border-b border-gray-300">
-              <AccordionTrigger className="text-blue-600 font-semibold text-left hover:no-underline py-4">
+            <AccordionItem key={faq.id} value={faq.id} className="border-b border-neutral-800">
+              <AccordionTrigger className="text-white font-semibold text-left hover:no-underline py-4">
                 {faq.question}
               </AccordionTrigger>
-              <AccordionContent className="text-gray-600 pb-4">
+              <AccordionContent className="text-neutral-400 pb-4">
                 {faq.answer}
               </AccordionContent>
             </AccordionItem>

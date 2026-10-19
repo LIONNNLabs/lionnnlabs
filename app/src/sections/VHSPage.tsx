@@ -56,7 +56,7 @@ export function VHSPage({ onNavigate: _onNavigate }: VHSPageProps) {
               const productsSection = document.getElementById('vhs-products');
               productsSection?.scrollIntoView({ behavior: 'smooth' });
             }}
-            className="bg-blue-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+            className="bg-lion-red text-white px-8 py-3 rounded-lg font-medium hover:bg-lion-red-dark transition-colors"
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
@@ -78,7 +78,7 @@ export function VHSPage({ onNavigate: _onNavigate }: VHSPageProps) {
       <section id="vhs-products" className="py-16 px-4 max-w-6xl mx-auto">
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {vhsProducts.map((product) => (
-            <div key={product.id} className="product-card bg-gray-900 rounded-lg overflow-hidden">
+            <div key={product.id} className="product-card bg-neutral-900 rounded-lg overflow-hidden">
               <div className="relative h-48">
                 <img 
                   src={product.image} 
@@ -99,9 +99,9 @@ export function VHSPage({ onNavigate: _onNavigate }: VHSPageProps) {
                 </div>
               </div>
               <div className="p-4">
-                <p className="text-gray-400 text-sm mb-4">{product.description}</p>
+                <p className="text-neutral-400 text-sm mb-4">{product.description}</p>
                 {product.features && (
-                  <ul className="text-sm text-gray-500 space-y-1 mb-4">
+                  <ul className="text-sm text-neutral-500 space-y-1 mb-4">
                     {product.features.map((feature, i) => (
                       <li key={i}>• {feature}</li>
                     ))}
@@ -111,7 +111,7 @@ export function VHSPage({ onNavigate: _onNavigate }: VHSPageProps) {
                   <p className="text-2xl font-bold text-white">$ {product.price.toFixed(2)}</p>
                   <button
                     onClick={() => addToCart(product)}
-                    className="bg-blue-600 text-white px-6 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors"
+                    className="bg-lion-red text-white px-6 py-2 rounded-lg font-medium hover:bg-lion-red-dark transition-colors"
                   >
                     BUY NOW
                   </button>
@@ -123,7 +123,7 @@ export function VHSPage({ onNavigate: _onNavigate }: VHSPageProps) {
 
         {/* Coming Soon Card */}
         <div className="mt-8">
-          <div className="bg-gradient-to-r from-purple-900 to-blue-900 rounded-lg p-8 text-center">
+          <div className="bg-gradient-to-r from-neutral-900 to-neutral-700 rounded-lg p-8 text-center">
             <h3 className="text-2xl font-bold text-white mb-2">More VHS Effects Coming Soon</h3>
             <p className="text-white/70">Including 8mm film, CRT effects, and more retro aesthetics!</p>
           </div>

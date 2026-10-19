@@ -5,6 +5,11 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        // Paleta LionnnLabs: base negro/gris/blanco + rojo de acento
+        lion: {
+          red: '#F22206',
+          'red-dark': '#C91B04',
+        },
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
